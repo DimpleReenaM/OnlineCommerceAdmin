@@ -1,0 +1,27 @@
+<div class="user-container">
+    <h3>Users (Role: User)</h3>
+  
+    <table class="user-table" *ngIf="users.length > 0; else noUsers">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.userId }}</td>
+          <td>{{ user.userName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.address }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <ng-template #noUsers>
+      <p>No users with role "User" found.</p>
+    </ng-template>
+  </div>
+  

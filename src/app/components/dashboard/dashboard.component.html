@@ -1,0 +1,331 @@
+ <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="bg-dark">
+            <div class="sidebar-header p-3 border-bottom">
+                <h3 class="text-white">Admin Portal</h3>
+            </div>
+            <ul class="list-unstyled components p-3">
+                <li class="active">
+                    <a href="#" class="text-white d-flex align-items-center">
+                        <i class="bi bi-speedometer2 me-3"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-white d-flex align-items-center">
+                        <i class="bi bi-cart me-3"></i>
+                        Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-white d-flex align-items-center">
+                        <i class="bi bi-people me-3"></i>
+                        Users
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-white d-flex align-items-center">
+                        <i class="bi bi-shop me-3"></i>
+                        Sellers
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-white d-flex align-items-center">
+                        <i class="bi bi-graph-up me-3"></i>
+                        Analytics
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-white d-flex align-items-center">
+                        <i class="bi bi-gear me-3"></i>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Top Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-dark">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    
+                    <div class="d-flex align-items-center ms-auto">
+                        <div class="input-group rounded me-3">
+                            <input type="text" class="form-control rounded" placeholder="Search...">
+                            <span class="input-group-text border-0 bg-transparent">
+                                <i class="bi bi-search"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="dropdown">
+                            <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Admin" width="32" height="32" class="rounded-circle me-2">
+                                <span>Admin User</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="container-fluid p-4">
+                <h2 class="mb-4">Dashboard Overview</h2>
+                
+                <!-- Stats Cards -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Total Revenue</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$24,780</div>
+                                        <div class="mt-2 text-success small">
+                                            <i class="bi bi-arrow-up me-1"></i>
+                                            <span>12.5% from last month</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-currency-dollar fs-1 text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Total Orders</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">1,245</div>
+                                        <div class="mt-2 text-success small">
+                                            <i class="bi bi-arrow-up me-1"></i>
+                                            <span>8.3% from last month</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-cart fs-1 text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            Active Users</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">3,452</div>
+                                        <div class="mt-2 text-danger small">
+                                            <i class="bi bi-arrow-down me-1"></i>
+                                            <span>2.1% from last month</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-people fs-1 text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            New Sellers</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">28</div>
+                                        <div class="mt-2 text-success small">
+                                            <i class="bi bi-arrow-up me-1"></i>
+                                            <span>15.8% from last month</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-shop fs-1 text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Row -->
+                <div class="row">
+                    <!-- Recent Orders -->
+                    <div class="col-xl-8 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Recent Orders</h6>
+                                <a href="#" class="btn btn-sm btn-primary">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Customer</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#ORD-7841</td>
+                                                <td>John Smith</td>
+                                                <td>May 15, 2023</td>
+                                                <td>$125.00</td>
+                                                <td><span class="badge bg-warning text-dark">Processing</span></td>
+                                                <td><i class="bi bi-three-dots-vertical"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-7839</td>
+                                                <td>Sarah Johnson</td>
+                                                <td>May 14, 2023</td>
+                                                <td>$89.50</td>
+                                                <td><span class="badge bg-info">Shipped</span></td>
+                                                <td><i class="bi bi-three-dots-vertical"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-7835</td>
+                                                <td>Michael Brown</td>
+                                                <td>May 14, 2023</td>
+                                                <td>$245.75</td>
+                                                <td><span class="badge bg-success">Delivered</span></td>
+                                                <td><i class="bi bi-three-dots-vertical"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-7828</td>
+                                                <td>Emily Davis</td>
+                                                <td>May 13, 2023</td>
+                                                <td>$67.30</td>
+                                                <td><span class="badge bg-danger">Cancelled</span></td>
+                                                <td><i class="bi bi-three-dots-vertical"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-7821</td>
+                                                <td>Robert Wilson</td>
+                                                <td>May 12, 2023</td>
+                                                <td>$189.99</td>
+                                                <td><span class="badge bg-success">Delivered</span></td>
+                                                <td><i class="bi bi-three-dots-vertical"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Sellers -->
+                    <div class="col-xl-4 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Recent Sellers</h6>
+                                <a href="#" class="btn btn-sm btn-primary">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="me-3">
+                                            <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">JD</div>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">John Doe</h6>
+                                            <small class="text-muted">Electronics Store</small>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="me-3">
+                                            <div class="avatar bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">AS</div>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Alice Smith</h6>
+                                            <small class="text-muted">Fashion Boutique</small>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="me-3">
+                                            <div class="avatar bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">RJ</div>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Robert Johnson</h6>
+                                            <small class="text-muted">Home Decor</small>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="me-3">
+                                            <div class="avatar bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">MW</div>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Maria Williams</h6>
+                                            <small class="text-muted">Beauty Products</small>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="me-3">
+                                            <div class="avatar bg-danger text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">TB</div>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Thomas Brown</h6>
+                                            <small class="text-muted">Sports Equipment</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts Section -->
+                <div class="row">
+                    <div class="col-xl-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Sales Overview</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-placeholder">
+                                    <img src="https://via.placeholder.com/600x300?text=Sales+Chart" alt="Sales Chart" class="img-fluid rounded">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">User Acquisition</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-placeholder">
+                                    <img src="https://via.placeholder.com/600x300?text=Users+Chart" alt="Users Chart" class="img-fluid rounded">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

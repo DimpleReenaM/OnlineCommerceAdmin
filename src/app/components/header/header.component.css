@@ -1,0 +1,97 @@
+.admin-header {
+    background-color: #000 !important; /* Pure black background */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  }
+  .admin-header {
+    background-color: #000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensures the header stays on top of other content */
+    width: 100%;
+  }
+  
+  .admin-header .nav-link {
+    color: #f8f9fa;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .admin-header .nav-link:hover,
+  .admin-header .nav-link.active {
+    color: #ffc107; /* Highlight on hover/active */
+  }
+  
+  .admin-header .logo h4 {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  .admin-header .btn-dark {
+    background-color: #343a40;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-header .btn-dark:hover {
+    background-color: #495057;
+  }
+  
+  .admin-header .btn-light {
+    background-color: #f8f9fa;
+    color: #000;
+    font-weight: 500;
+  }
+  
+  .admin-header .btn-light:hover {
+    background-color: #e2e6ea;
+  }
+  
+  .cart-icon {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+  }
+  
+  .cart-icon:hover {
+    color: #ffc107;
+  }
+  
+  .cart-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background-color: #ffc107;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    line-height: 1;
+  }
+  .logo {
+    height: 75px;
+    width: 100px;
+    transition: all 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .logo-svg {
+      height: 30px;
+    }
+    .logo-svg text {
+      font-size: 16px !important;
+    }
+    .logo-svg text:last-child {
+      font-size: 8px !important;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .logo{
+      width: 68px !important;
+    }
+  }
