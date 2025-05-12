@@ -12,7 +12,7 @@ export class AdminService {
 
   constructor(private http: HttpClient) {}
 
-  getUsersOnly(): Observable<any> {
-    return this.http.get<any>(this.apiUrl); // assuming the API wraps data inside a `data` field
+  getUsersOnly(role:string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}?role=${role}`); // assuming the API wraps data inside a `data` field
   }
 }

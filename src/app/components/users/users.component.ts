@@ -12,11 +12,12 @@ import { NgFor, NgIf } from '@angular/common';
 export class UsersComponent implements OnInit{
   userEmail: string = '';
   users:any;
+  role:string='USER'
   constructor(private route: ActivatedRoute, private userService:AdminService) {}
  
   
   ngOnInit(): void {
-    this.userService.getUsersOnly().subscribe({
+    this.userService.getUsersOnly(this.role).subscribe({
       next: (res) => {
         this.users = res.data; // assuming `data` field wraps the list
       },
