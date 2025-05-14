@@ -4,6 +4,9 @@ import path from 'path';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { adminGuard } from './guards/admin.guard';
 import { UsersComponent } from './components/users/users.component';
+import { SellerdetailsComponent } from './components/sellerdetails/sellerdetails.component';
+import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
+import { ProductsComponent } from './components/sellerproducts/products/products.component';
 
 export const routes: Routes = [
     {
@@ -20,6 +23,20 @@ export const routes: Routes = [
         path:'users',
         component:UsersComponent,
         canActivate:[adminGuard]
+    }
+    ,{
+        path:'seller',
+        component:SellerdetailsComponent,
+        canActivate:[adminGuard]
+    }
+    ,
+    {
+        path:'admin/user-orders/:userId',
+        component:ViewOrdersComponent
+    },
+    {
+        path:'products/seller/:sellerId',
+        component:ProductsComponent
     }
            
 
