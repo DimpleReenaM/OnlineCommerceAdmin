@@ -29,10 +29,10 @@ export class LoginComponent{
     if (this.loginForm.invalid) {
       return;
     }
-
-    const { email, password } = this.loginForm.value;
-
-    this.ms.login(email, password).subscribe(
+    this.ms.login({
+        email:this.loginForm.get('email')?.value,
+        password:this.loginForm.get('password')?.value
+      }).subscribe(
       (response: any) => {
         // Store the JWT token in localStorage
         localStorage.setItem('Role',response.data.userData.role)
