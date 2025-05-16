@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DashboardDto } from '../../components/dashboard/dashboardDto';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,14 @@ export class AdminService {
 
     return this.http.put<void>(`https://localhost:7174/api/Order/update-status`,body);
   }
-  
+   getDashboardData(): Observable<DashboardDto> {
+    return this.http.get<DashboardDto>(`https://localhost:7174/api/AdminDashboard`);
+  }
+
+  getuserOrders():Observable<any>{
+      return this.http.get<any>(`${this.apiUrl}/Order/Get-all-orders`);
+
+  }
 
 
 }

@@ -1,78 +1,70 @@
-import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor,
-  HttpErrorResponse
-} from '@angular/common/http';
-import { BehaviorSubject, catchError, filter, Observable, of, switchMap, take, throwError } from 'rxjs';
-import { LoginService } from '../services/Login/login.service';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { BehaviorSubject, catchError, filter, Observable, switchMap, take, throwError } from "rxjs";
+import { LoginService } from "../services/Login/login.service";
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthIntercetorInterceptor implements HttpInterceptor {
-  
-  isUserRefreshing:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
+  isUserRefreshing: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private authService: LoginService) { }
+  constructor(private authService: LoginService, private router: Router) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.authService.UserLoggedIn()) {
-  const token = this.authService.getAccessToken();
-  console.log('Adding token to request:', token);
+      
+      if (this.authService.isTokenExpired()) {
+        this.authService.LogOut();
+        this.router.navigate(['/']);
+        return throwError(() => new Error('Token expired'));
+      }
 
-  request = request.clone({
-    headers: request.headers.set('Authorization', 'Bearer ' + token)
-  });
-}
-    if (this.authService.UserLoggedIn()) {
+
       request = request.clone({
         headers: request.headers.set('Authorization', 'Bearer ' + this.authService.getAccessToken())
-      })
+      });
     }
 
     return next.handle(request).pipe(
-      catchError((error:HttpErrorResponse) => {
-        const isError = error instanceof HttpErrorResponse;
-        if (isError && error.status === 401 && this.authService.UserLoggedIn()) {
-          
-          if(!this.isUserRefreshing.getValue()){
-            this.isUserRefreshing.next(true) 
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401 && this.authService.UserLoggedIn()) {
+          if (!this.isUserRefreshing.value) {
+            this.isUserRefreshing.next(true);
             return this.authService.refreshUser().pipe(
-              switchMap((res) => {
-                this.isUserRefreshing.next(false) 
-                if (res) {
-                  return next.handle(request.clone({
+              switchMap(success => {
+                this.isUserRefreshing.next(false);
+                if (success) {
+                  const newReq = request.clone({
                     headers: request.headers.set('Authorization', 'Bearer ' + this.authService.getAccessToken())
-                  }))
-                }
-                else {
+                  });
+                  return next.handle(newReq);
+                } else {
                   this.authService.LogOut();
-                  return of(false);
+                  return throwError(() => error);
                 }
               }),
-              catchError((refreshErr) => {
-                this.isUserRefreshing.next(false) 
+              catchError(refreshErr => {
+                this.isUserRefreshing.next(false);
                 this.authService.LogOut();
-                return refreshErr;
+                return throwError(() => refreshErr);
               })
-            )
+            );
           }
 
           return this.isUserRefreshing.pipe(
-            filter((val)=>val==false),
+            filter(val => val === false),
             take(1),
-            switchMap(()=>{
-              return next.handle(request.clone({
+            switchMap(() => {
+              const newReq = request.clone({
                 headers: request.headers.set('Authorization', 'Bearer ' + this.authService.getAccessToken())
-              }))
+              });
+              return next.handle(newReq);
             })
-          )
-
-
+          );
         }
-        return throwError(()=>error);
+
+        return throwError(() => error);
       })
-    ) as Observable<HttpEvent<any>>;
+    );
   }
 }

@@ -1,67 +1,83 @@
-<div class="user-dashboard">
-  <div class="dashboard-header">
-    <div class="header-content">
-      <h1 class="dashboard-title">
-        <i class="fas fa-users"></i> User Management
-      </h1>
-      <div class="role-tag gradient-bg">
-        <i class="fas fa-user-tag"></i> User Role
-      </div>
-    </div>
-    <div class="search-filter">
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" [(ngModel)]="searchText" placeholder="Search users..." />
-      </div>
-    </div>
+<div class="wrapper">
+  <div class="bg">
+    <app-layout></app-layout>
   </div>
 
-  <div class="card-container" *ngIf="users.length > 0; else noUsers">
-    <div class="responsive-table">
-      <table class="modern-colorful-table">
-        <thead>
-          <tr>
-            <th class="th-id">ID</th>
-            <th class="th-user">Username</th>
-            <th class="th-email">Email</th>
-            <th class="th-actions">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of filteredUsers(); let i = index"
-            [style.--color-accent]="'hsl(' + (i * 60 % 360) + ', 80%, 60%)'">
-            <td class="td-id">#{{user.userId}}</td>
-            <td class="td-user">
-              <div class="user-avatar" [style.background]="'hsl(' + (i * 60 % 360) + ', 80%, 85%)'">
-                {{user.userName.charAt(0).toUpperCase() }}
-              </div>
-              <span class="user-name">{{user.userName}}</span>
-            </td>
-            <td class="td-email">
-              <i class="fas fa-envelope"></i> {{user.email}}
+  <div class="bg-light" id="content1">
+    <div class="bg-light">
+      <app-header></app-header>
+      <div class="container-fluid p-4">
+        <div class="dashboard-header">
+          <div class="header-content">
+            <h1 class="dashboard-title">
+              <i class="fas fa-users"></i> User Management
+            </h1>
+            <div class="role-tag gradient-bg">
+              <i class="fas fa-user-tag"></i> User Role
+            </div>
+          </div>
+          <div class="search-filter">
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" [(ngModel)]="searchText" placeholder="Search users..." />
+            </div>
+          </div>
+        </div>
 
-            </td>
-            <td class="td-actions">
-              <button class="action-btn view-orders" (click)="viewOrders(user.userId)">
-                <i class="fas fa-shopping-bag"></i> Orders
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="card-container" *ngIf="users.length > 0; else noUsers">
+          <div class="responsive-table">
+            <table class="modern-colorful-table">
+              <thead>
+                <tr>
+                  <th class="th-id">ID</th>
+                  <th class="th-user">Username</th>
+                  <th class="th-email">Email</th>
+                  <th class="th-actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of filteredUsers(); let i = index"
+                  [style.--color-accent]="'hsl(' + (i * 60 % 360) + ', 80%, 60%)'">
+                  <td class="td-id">#{{user.userId}}</td>
+                  <td class="td-user">
+                    <div class="user-avatar" [style.background]="'hsl(' + (i * 60 % 360) + ', 80%, 85%)'">
+                      {{user.userName.charAt(0).toUpperCase() }}
+                    </div>
+                    <span class="user-name">{{user.userName}}</span>
+                  </td>
+                  <td class="td-email">
+                    <i class="fas fa-envelope"></i> {{user.email}}
+
+                  </td>
+                  <td class="td-actions">
+                    <button class="action-btn view-orders" (click)="viewOrders(user.userId)">
+                      <i class="fas fa-shopping-bag"></i> Orders
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <ng-template #noUsers>
+          <div class="empty-state">
+            <div class="empty-icon gradient-bg">
+              <i class="fas fa-user-slash"></i>
+            </div>
+            <h3>No Users Found</h3>
+            <p>There are currently no users with the "User" role in the system.</p>
+            <button class="refresh-btn gradient-bg">
+              <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+          </div>
+        </ng-template>
+      </div>
     </div>
+
   </div>
 
-  <ng-template #noUsers>
-    <div class="empty-state">
-      <div class="empty-icon gradient-bg">
-        <i class="fas fa-user-slash"></i>
-      </div>
-      <h3>No Users Found</h3>
-      <p>There are currently no users with the "User" role in the system.</p>
-      <button class="refresh-btn gradient-bg">
-        <i class="fas fa-sync-alt"></i> Refresh
-      </button>
-    </div>
-  </ng-template>
+
+
+
 </div>

@@ -4,10 +4,12 @@ import { AdminService } from '../../services/admin/admin.service';
 import { NgFor, NgIf } from '@angular/common';
 import { INITIAL_CONFIG } from '@angular/platform-server';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { LayoutComponent } from "../layout/layout/layout.component";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-users',
-  imports: [NgIf,NgFor,ReactiveFormsModule,FormsModule],
+  imports: [NgIf, NgFor, ReactiveFormsModule, FormsModule, LayoutComponent, HeaderComponent],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })

@@ -7,6 +7,7 @@ import { UsersComponent } from './components/users/users.component';
 import { SellerdetailsComponent } from './components/sellerdetails/sellerdetails.component';
 import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 import { ProductsComponent } from './components/sellerproducts/products/products.component';
+import { UserordersComponent } from './components/userorders/userorders.component';
 
 export const routes: Routes = [
     {
@@ -32,11 +33,20 @@ export const routes: Routes = [
     ,
     {
         path:'admin/user-orders/:userId',
-        component:ViewOrdersComponent
+        component:ViewOrdersComponent,
+        canActivate:[adminGuard]
+
     },
     {
         path:'products/seller/:sellerId',
-        component:ProductsComponent
+        component:ProductsComponent,
+        canActivate:[adminGuard]
+
+    },
+    {
+        path:'allorders',
+        component:UserordersComponent,
+        canActivate:[adminGuard]
     }
            
 

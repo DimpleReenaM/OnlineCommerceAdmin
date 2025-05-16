@@ -1,0 +1,36 @@
+<div>
+  <nav id="sidebar">
+    <div class="sidebar-header p-3 border-bottom border-accent">
+      <h3 class="text-white">
+        <i class="bi bi-shield-lock me-2 text-accent"></i>Admin Portal
+      </h3>
+    </div>
+
+    <ul class="list-unstyled components p-3">
+      <li routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/dashboard']" class="text-white d-flex align-items-center">
+          <i class="bi bi-speedometer2 me-3 text-accent"></i>
+          Dashboard
+        </a>
+      </li>
+      <li routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/allorders']" class="text-white d-flex align-items-center">
+          <i class="bi bi-cart me-3 text-accent"></i>
+          Orders
+        </a>
+      </li>
+      <li routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/users']" class="text-white d-flex align-items-center">
+          <i class="bi bi-people me-3 text-accent"></i>
+          Users
+        </a>
+      </li>
+      <li routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/seller']" class="text-white d-flex align-items-center">
+          <i class="bi bi-shop me-3 text-accent"></i>
+          Sellers
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

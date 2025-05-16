@@ -21,7 +21,6 @@
                   <th>Date</th>
                   <th>Amount</th>
                   <th>Status</th>
-                  <th>Update Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -34,24 +33,7 @@
                       {{ order.status }}
                     </span>
                   </td>
-                  <td>
-                    <div class="status-select">
-                      <select [(ngModel)]="order.status" (ngModelChange)="updateShippingStatus(order.id, order.status)"
-                        [disabled]="order.status === 'Delivered'">
-                        <option *ngFor="let status1 of orderStatuses" [value]="status1">
-                          {{ status1 }}
-                        </option>
-                      </select>
-                      <div class="select-arrow">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                          <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                      </div>
-                    </div>
-                    <span *ngIf="order.shippingStatus === 'Delivered'" class="status-locked-message">
-                      This order has already been delivered and cannot be updated.
-                    </span>
-                  </td>
+                 
                 </tr>
               </tbody>
             </table>

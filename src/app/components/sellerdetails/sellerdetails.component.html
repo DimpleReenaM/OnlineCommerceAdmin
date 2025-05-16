@@ -1,52 +1,82 @@
-<div class="user-management-container">
-  <div class="header">
-    <h2>Seller Management</h2>
+<div class="wrapper">
+  <div class="bg">
+    <app-layout></app-layout>
   </div>
 
-  <div class="card" *ngIf="users.length > 0; else noUsers">
-    <div class="table-responsive">
-      <table class="modern-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td class="text-muted">#{{ user.userId }}</td>
-            <td>
-              <div class="user-info">
-                <span class="username">{{ user.userName }}</span>
-              </div>
-            </td>
-            <td class="email-cell">
-              <a href="mailto:{{ user.email }}" class="email-link">{{ user.email }}</a>
-            </td>
-            <td>
-              <div class="address-truncate" [title]="user.address">
-                {{ user.address  }}
-              </div>
-            </td>
-            <td>
-              <button class="action-btn view-products" [routerLink]="['/products/seller', user.userId]">
-                <i class="fas fa-box-open"></i> Products
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+
+  <div class="bg-light" id="content1">
+    <div class="bg-light">
+      <app-header></app-header>
+      <div class="user-management-container">
+        <div class="dashboard-header">
+          <div class="header-content">
+            <h1 class="dashboard-title">
+              <i class="fas fa-users"></i> User Management
+            </h1>
+           
+          </div>
+          <div class="search-filter">
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" [(ngModel)]="searchText" placeholder="Search users..." />
+            </div>
+          </div>
+        </div>
+
+        <div class="card" *ngIf="users.length > 0; else noUsers">
+          <div class="table-responsive">
+            <table class="modern-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of filteredUsers()">
+                  <td class="text-muted">#{{ user.userId }}</td>
+                  <td>
+                    <div class="user-info">
+                      <span class="username">{{ user.userName }}</span>
+                    </div>
+                  </td>
+                  <td class="email-cell">
+                    <a href="mailto:{{ user.email }}" class="email-link">{{ user.email }}</a>
+                  </td>
+                  <td>
+                    <div class="address-truncate" [title]="user.address">
+                      {{ user.address }}
+                    </div>
+                  </td>
+                  <td>
+                    <button class="action-btn view-products" [routerLink]="['/products/seller', user.userId]">
+                      <i class="fas fa-box-open"></i> Products
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <ng-template #noUsers>
+          <div class="empty-state">
+            <i class="fas fa-users empty-icon"></i>
+            <h3>No Users Found</h3>
+            <p>There are currently no users with the "User" role in the system.</p>
+          </div>
+        </ng-template>
+      </div>
     </div>
   </div>
 
-  <ng-template #noUsers>
-    <div class="empty-state">
-      <i class="fas fa-users empty-icon"></i>
-      <h3>No Users Found</h3>
-      <p>There are currently no users with the "User" role in the system.</p>
-    </div>
-  </ng-template>
+
+
+
+
+
 </div>

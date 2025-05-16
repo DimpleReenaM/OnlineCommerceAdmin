@@ -5,10 +5,12 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { NgFor, NgIf } from '@angular/common';
 import { OrderStatus } from './statusDTO';
+import { LayoutComponent } from "../layout/layout/layout.component";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-view-orders',
-  imports: [ReactiveFormsModule,NgIf,NgFor,FormsModule],
+  imports: [ReactiveFormsModule, NgIf, NgFor, FormsModule, LayoutComponent, HeaderComponent],
   templateUrl: './view-orders.component.html',
   styleUrl: './view-orders.component.css'
 })

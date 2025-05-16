@@ -8,11 +8,11 @@ import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-login',
-  imports: [NgIf,HeaderComponent,ReactiveFormsModule],
+  imports: [NgIf,ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent{
+export class LoginComponent {
   loginForm!: FormGroup;
   errorMessage: string | null = null;
   loginrole:string=''
@@ -25,6 +25,8 @@ export class LoginComponent{
     });
 
   }
+
+  
   onSubmit() {
     if (this.loginForm.invalid) {
       return;

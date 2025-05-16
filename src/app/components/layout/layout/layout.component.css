@@ -1,0 +1,39 @@
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  color: white;
+  transition: all 0.3s ease;
+}
+.sidebar-header {
+  padding: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.components {
+  padding: 1rem 0;
+}
+.components li {
+  margin: 0.5rem 0;
+}
+.components li a {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.components li a:hover {
+  background: rgba(76, 201, 240, 0.2);
+  color: #4cc9f0;
+  box-shadow: 0 0 10px rgba(76, 201, 240, 0.4);
+}
+.components li.active a {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #4cc9f0;
+}
+.active-link {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #4cc9f0 !important;
+  border-left: 3px solid #4cc9f0 !important;
+}

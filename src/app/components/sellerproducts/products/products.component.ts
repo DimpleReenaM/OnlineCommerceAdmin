@@ -8,11 +8,13 @@ import { MycategoryService } from '../../../services/seller/mycategory.service';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../../../services/Login/login.service';
 import { NgFor, NgIf } from '@angular/common';
+import { LayoutComponent } from "../../layout/layout/layout.component";
+import { HeaderComponent } from "../../header/header.component";
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [NgIf, NgFor, ReactiveFormsModule],
+  imports: [NgIf, NgFor, ReactiveFormsModule, LayoutComponent, HeaderComponent],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
@@ -231,6 +233,6 @@ export class ProductsComponent {
   }
 
   getLowStockCount(): number {
-    return this.products.filter(p => p.stockQuantity < 10).length;
+    return this.products.filter(p => Number(p.stockQuantity) < 10).length;
   }
 }

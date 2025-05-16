@@ -498,3 +498,21 @@ input:checked + .slider:before {
 }
 
 /* Rest of your existing styles... */
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.bg{
+  background: linear-gradient(to bottom, #2b2d42, #1d1f33) !important;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#content1 {
+  width: 100%;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}

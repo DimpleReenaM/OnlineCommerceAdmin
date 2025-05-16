@@ -2,7 +2,7 @@ export interface MyProduct {
     id: number;
     name: string;
     originalPrice: number;
-    stockQuantity: number;
+    stockQuantity: string;
     discountPercentage?: number;
     discountAmount?: number;
     newPrice?: number;

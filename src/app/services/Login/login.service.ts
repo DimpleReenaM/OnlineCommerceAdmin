@@ -9,13 +9,13 @@ import { Route, Router, RouterLink } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-   private isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private userDetail = new BehaviorSubject<UserDto | null | undefined>(undefined);
   private refreshTokenSubscription: Subscription | null = null;
-  private apiUrl = 'https://localhost:7174/api/auth'; 
-  constructor(private http:HttpClient,private jwtHelper: JwtHelperService,private router: Router
+  private apiUrl = 'https://localhost:7174/api/auth';
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router
 
-) { }
+  ) { }
 
   login(crediential: LoginReq): Observable<any> {
     return this.http.post<ResponseDto<LoginResData>>(`${this.apiUrl}/login`, crediential).pipe(
@@ -40,8 +40,9 @@ export class LoginService {
       })
     )
   }
-    UserLoggedIn() {
-    return this.isUserLoggedIn.value && !this.jwtHelper.isTokenExpired(this.getAccessToken());
+  UserLoggedIn(): boolean {
+    const token = this.getAccessToken();
+    return !!token;
   }
   getAccessToken() {
     return localStorage.getItem('accestoken')
@@ -52,7 +53,7 @@ export class LoginService {
     return user ? JSON.parse(user) : null;
   }
 
-   refreshUser() {
+  refreshUser() {
     var accessToken = localStorage.getItem('accestoken');
     var refreshToken = localStorage.getItem('refreshtoken');
 
@@ -83,9 +84,8 @@ export class LoginService {
 
   }
 
-    private removeUser() {
-    localStorage.setItem('accestoken', '');
-    localStorage.setItem('refreshtoken', '');
+  private removeUser() {
+    localStorage.clear();
     this.isUserLoggedIn.next(false);
     this.userDetail.next(undefined);
     this.stopTokenRefresh();
@@ -97,31 +97,34 @@ export class LoginService {
       this.refreshTokenSubscription = null;
     }
   }
-  
-   LogOut() {
+
+  LogOut() {
     return this.http.get<ResponseDto<null>>(`${this.apiUrl}/revoke`).pipe(
       map((res) => {
         if (res.isSuccessed) {
           this.removeUser();
-          // this.router.navigate('/');
         }
         return res;
       })
     );
 
   }
-  
+  isTokenExpired(): boolean {
+    const token = localStorage.getItem('token');
+    if (!token) return true;
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const expiry = payload.exp;
+      const now = Math.floor(Date.now() / 1000);
+      return now > expiry;
+    } catch (e) {
+      return true; // if token is invalid or parsing fails
+    }
   }
 
-  getRole(): string | null {
-    return localStorage.getItem('Role');
-  }
 
-  isLoggedIn(): boolean {
-    return !!this.getToken();
-  }
-  
+
+
+
 }
