@@ -9,7 +9,7 @@ import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterLink, NgFor, ReactiveFormsModule, CurrencyPipe, NgClass, LayoutComponent, HeaderComponent],
+  imports: [RouterLink, NgFor, ReactiveFormsModule, LayoutComponent, HeaderComponent,CurrencyPipe,NgIf,NgClass],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -29,4 +29,6 @@ export class DashboardComponent implements OnInit{
     });
   }
 
+  
+    
 }

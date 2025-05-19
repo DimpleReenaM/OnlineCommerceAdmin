@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { MyBrand, MyCategory, MyProduct } from './productdto';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SellerService } from '../../../services/seller/seller.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MybrandService } from '../../../services/seller/mybrand.service';
@@ -14,7 +14,7 @@ import { HeaderComponent } from "../../header/header.component";
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [NgIf, NgFor, ReactiveFormsModule, LayoutComponent, HeaderComponent],
+  imports: [NgIf, NgFor, ReactiveFormsModule, LayoutComponent, HeaderComponent,FormsModule],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
@@ -26,6 +26,7 @@ export class ProductsComponent {
   selectedFile: File | null = null;
   editingProductId: any = null;
   modalVisible: boolean = false;
+  searchText:string=''
 
   constructor(
     private productService1: SellerService,
@@ -152,6 +153,12 @@ export class ProductsComponent {
       });
     }
   }
+
+  get filteredProducts(): MyProduct[] {
+  return this.products.filter(product =>
+    product.name.toLowerCase().includes(this.searchText.toLowerCase())
+  );
+}
 
   editProduct(product: MyProduct) {
     this.openModal(product);

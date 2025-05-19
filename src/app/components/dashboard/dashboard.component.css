@@ -64,6 +64,7 @@ body {
   color: white;
   transition: all 0.3s ease;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  width: 252px !important;
 }
 
 /* Content */
@@ -233,4 +234,7 @@ body {
   .dropdown-toggle span {
     display: none;
   }
+}
+.offcanvas{
+  background-color: #1d1f33 !important;
 }

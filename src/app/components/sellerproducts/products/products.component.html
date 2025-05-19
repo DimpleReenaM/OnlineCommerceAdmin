@@ -1,6 +1,9 @@
 <div class="wrapper">
 
-  <div class="bg">
+  <div class="d-none d-md-block bg">
+    <app-layout></app-layout>
+  </div>
+  <div class="offcanvas offcanvas-start d-md-none bg" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <app-layout></app-layout>
   </div>
 
@@ -10,12 +13,18 @@
       <div class="product-dashboard">
         <!-- Header Section -->
         <div class="dashboard-header">
-          <div class="header-content">
+          <div class="header-content d-flex justify-content-lg-between flex-column flex-lg-row align-items-start align-items-lg-center ">
             <div>
               <h2 class="dashboard-title">Product Dashboard</h2>
               <p class="dashboard-subtitle">{{ products.length }} products available</p>
             </div>
-            <button class="add-product-btn" (click)="openModal()">
+            <div class="search-filter">
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" [(ngModel)]="searchText" placeholder="Search products..." />
+            </div>
+          </div>
+            <button class="add-product-btn mt-4 mt-lg-0" (click)="openModal()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path
                   d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
@@ -27,7 +36,7 @@
 
         <!-- Products Grid -->
         <div class="products-container">
-          <div *ngFor="let product of products" class="product-card">
+          <div *ngFor="let product of filteredProducts" class="product-card">
             <div class="product-image-container">
               <img [src]="getImageUrl(product.thumbnail.imageUrl)" class="product-image" alt="Product Image">
               <span *ngIf="product.discountAmount" class="discount-badge">

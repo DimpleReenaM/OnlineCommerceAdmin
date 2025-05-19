@@ -1,5 +1,8 @@
 <div class="wrapper">
-  <div class="bg">
+  <div class="d-none d-md-block bg">
+    <app-layout></app-layout>
+  </div>
+  <div class="offcanvas offcanvas-start d-md-none bg" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <app-layout></app-layout>
   </div>
 
@@ -12,9 +15,7 @@
             <h1 class="dashboard-title">
               <i class="fas fa-users"></i> User Management
             </h1>
-            <div class="role-tag gradient-bg">
-              <i class="fas fa-user-tag"></i> User Role
-            </div>
+            
           </div>
           <div class="search-filter">
             <div class="search-bar">
