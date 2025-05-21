@@ -39,7 +39,10 @@ export class ViewOrdersComponent {
     });
   }
   updateShippingStatus(orderId: number, newStatus: string) {
-    this.userService.updateShippingStatus(orderId, newStatus).subscribe({
+
+    const userIdParam = this.route.snapshot.paramMap.get('userId');
+  const userId = userIdParam ? parseInt(userIdParam, 10) : null;
+    this.userService.updateShippingStatus(orderId, newStatus ,userId).subscribe({
       next: () => {
          Swal.fire({
                   title: 'Status Changed',

@@ -19,13 +19,13 @@ export class AdminService {
   getOrdersByUserId(userId: number): Observable<any> {
   return this.http.get<any>(`${this.apiUrl}/Order/user-orders/${userId}`);
   }
-  updateShippingStatus(orderId: number, newStatus: string): Observable<void> {
-    const body = { orderId, newStatus };
+  updateShippingStatus(orderId: number, newStatus: string,userId:any): Observable<void> {
+    const body = { orderId, newStatus ,userId};
 
-    return this.http.put<void>(`https://localhost:7174/api/Order/update-status`,body);
+    return this.http.put<void>(`${this.apiUrl}/Order/update-status`,body);
   }
    getDashboardData(): Observable<DashboardDto> {
-    return this.http.get<DashboardDto>(`https://localhost:7174/api/AdminDashboard`);
+    return this.http.get<DashboardDto>(`${this.apiUrl}/AdminDashboard`);
   }
 
   getuserOrders():Observable<any>{

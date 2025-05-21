@@ -1,9 +1,13 @@
 <!-- Sidebar (Reusable) -->
 <nav id="sidebar">
   <div class="sidebar-header p-3 border-bottom border-accent">
-    <h3 class="text-white">
-      <i class="bi bi-shield-lock me-2 text-accent"></i>Admin Portal
-    </h3>
+    <a href="" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" class="text-decoration-none">
+      <h3 class="text-white">
+        <i class="bi bi-shield-lock me-2 text-accent"></i>Admin Portal
+
+      </h3>
+    </a>
+
   </div>
 
   <ul class="list-unstyled components p-3">
