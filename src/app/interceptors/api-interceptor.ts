@@ -12,11 +12,9 @@ export class AuthIntercetorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.authService.UserLoggedIn()) {
-      
+
       if (this.authService.isTokenExpired()) {
-        this.authService.LogOut();
-        this.router.navigate(['/']);
-        return throwError(() => new Error('Token expired'));
+        this.authService.logout('Session timed out. Please login again.')
       }
 
 

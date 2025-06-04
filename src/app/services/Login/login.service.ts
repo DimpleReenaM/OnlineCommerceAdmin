@@ -4,6 +4,9 @@ import { BehaviorSubject, catchError, map, Observable, of, Subscription, tap } f
 import { LoginReq, LoginResData, ResponseDto, UserDto } from '../../components/login/loginDto';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Route, Router, RouterLink } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+ 
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,8 @@ export class LoginService {
   private userDetail = new BehaviorSubject<UserDto | null | undefined>(undefined);
   private refreshTokenSubscription: Subscription | null = null;
   private apiUrl = 'https://localhost:7174/api/auth';
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router,        private snackBar: MatSnackBar
+
 
   ) { }
 
@@ -109,6 +113,14 @@ export class LoginService {
     );
 
   }
+  logout(message?: string) {
+  this.removeUser();
+  if (message) {
+    alert(message)
+  }
+  this.router.navigate(['/']);
+}
+
   isTokenExpired(): boolean {
     const token = localStorage.getItem('token');
     if (!token) return true;
